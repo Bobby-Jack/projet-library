@@ -1,0 +1,86 @@
+.navbar{
+    height: 50px;
+    width: 80vw;
+    padding: 10px 10vw;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cote{
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.burger{
+    height: 30px;
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    cursor: pointer;
+}
+
+.burgerLittle , .burgerBig{
+    height: 5px;
+    background-color: black;
+    width: 100%;
+    transition: 0.3s ease;
+}
+
+.burgerLittle{
+    width: 50%;
+}
+
+
+.burger:hover .burgerLittle{
+    width: 100%;
+}
+.burger:hover .burgerBig{
+    width: 50%;
+}
+
+.center{
+    position: relative;
+    display: flex;
+}
+
+.input{
+    height: 30px;
+    width: 30vw;
+    padding: 5px 5vw;
+    background-color: #F8F9FA;
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, 0);
+    transition: 0.5s ease;
+}
+
+.input:hover{
+    border: 2px solid rgba(0, 0, 0);
+    background-color: white;
+}
+
+.input:active{
+    border-radius: 5px;
+}
+
+.search{
+    position: absolute;
+    top: 10px;
+    left: 5%;
+    font-size: 1.5em;
+}
+
+.phone{
+    display: flex;
+    align-self: center;
+    gap: 10px;
+}
+
+.phone a{
+    font-style: none;
+    
+}

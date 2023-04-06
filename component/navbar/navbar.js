@@ -1,7 +1,7 @@
 import styles from './navbar.module.css'
-import { FaSearch, FaPhoneAlt } from 'react-icons/fa';
+import { FaSearch, FaPhoneAlt, FaHeart } from 'react-icons/fa';
 
-export default NavBar({main}) {
+export default function NavBar({main}) { 
     return (
         <div className={styles.navbar}>
             <div className={styles.cote}>
@@ -14,7 +14,7 @@ export default NavBar({main}) {
             </div>
             {
                 main ?
-                <div className={style.center}>
+                <div className={styles.center}>
                     <FaSearch className={styles.search}/>
                     <input className={styles.input} type="text" placeholder='Search your book here'/>
                 </div>
@@ -23,11 +23,14 @@ export default NavBar({main}) {
             }
             
             <div className={styles.cote}>
-                <span>
+                <div className={styles.phone}>
                     <FaPhoneAlt/>
-                </span>
-                <div></div>
+                    <a href="tel:+0485313406">0485313406</a>
+                </div>
+                <div>
+                    <FaHeart/>
+                </div>
             </div>
         </div>
     )
-}
+ }
