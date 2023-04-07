@@ -1,0 +1,98 @@
+.caroussel{
+   height: 600px;
+   width: 100vw;
+   overflow-y: hidden;
+   overflow-x: hidden;
+   background-color: rgb(240, 240, 240); 
+   display: flex;
+   position: relative;
+}
+
+.content{
+    display: flex;
+    height: 100%;
+    width: 400vw;
+    transition: 0.3s ease;
+}
+
+.toChild2{
+    transform: translateX(-100vw);
+}
+.toChild3{
+    transform: translateX(-200vw);
+}
+.toChild4{
+    transform: translateX(-300vw);
+}
+
+.child{
+    height: 100%;
+    width: 100vw;
+    display: flex;
+}
+
+
+.navigator{
+    position: absolute;
+    display: flex;
+    bottom: 2%;
+    margin: auto;
+    left: 48%;
+    gap: 5px;
+    z-index: 2;
+}
+
+.bille{
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    background-color: rgb(224, 224, 224);
+    cursor: pointer;
+    transition: 0.3s ease;
+    z-index: 2;
+}
+
+.bille:hover{
+    background-color: rgb(168, 168, 168);
+}
+
+.bille.active{
+    width: 35px;
+    background-color: rgb(50, 143, 123);
+}
+
+.caroussel:hover .arrowBack, .caroussel:hover .arrowNext{
+    transform: translate(0) !important;
+    opacity: 1;
+}
+
+
+.arrowBack, .arrowNext{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(50, 143, 123);
+    color: white;
+    position: absolute;
+    top: 50%;
+    transition: 0.3s ease;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.arrowBack:hover, .arrowNext:hover{
+    background-color: rgb(47, 72, 88);
+}
+
+.arrowBack{
+    left: 3%;
+    transform: translateX(10px);
+}
+.arrowNext{
+    right: 3%;
+    transform: translateX(-10px);
+}
