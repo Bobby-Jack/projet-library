@@ -1,3 +1,4 @@
+import Footer from './footer/footer'
 import styles from './layout.module.css'
 import Navbar from './navbar/navbar'
 import FavMenu from './optionMenu/FavMenu'
@@ -21,6 +22,8 @@ export default function Layout({children, main }) {
             {/* ajout des deux menu connecté par des usestate d'activation */}
 
             {children}
+            <Footer/>
+            
         </>
     )
 }
