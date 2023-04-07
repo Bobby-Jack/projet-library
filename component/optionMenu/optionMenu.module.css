@@ -1,4 +1,4 @@
-.modal{
+.modal, .modal2{
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.3);
@@ -11,17 +11,28 @@
 .modal.off{
     transform: translateX(-100%);
 }
+.modal2.off{
+    transform: translateX(100%);
+}
 
-.menu{
-    height: 100%;
+.menu, .menu2{
+    height: 100vw;
     width: 25%;
     background-color: white;
     transition: 0.5s ease;
+    position: fixed;
+    z-index: 6;
+}
+
+.menu2{
+    right: 0;
 }
 
 .menu.off{
     transform: translateX(-100%);
-    transition-delay: 0.5s;
+}
+.menu2.off{
+    transform: translateX(100%);
 }
 
 .header{
@@ -34,6 +45,10 @@
     justify-content: space-between;
 }
 
+.headerRight{
+    background-color: white;
+}
+
 .content{
     display: flex;
     flex-direction: column;
@@ -41,6 +56,16 @@
     margin: 30px auto;
     gap: 25px;
     font-size: 1.2em;
+}
+
+.noFav{
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.veryBig{
+    font-size: 3em;
 }
 
 .content *{

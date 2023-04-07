@@ -1,7 +1,7 @@
 import styles from './navbar.module.css'
 import { FaSearch, FaPhoneAlt, FaHeart } from 'react-icons/fa';
 
-export default function NavBar({main, optionFunction}) { 
+export default function NavBar({main, optionFunction, favFunction}) { 
     return (
         <div className={styles.navbar}>
             <div className={styles.cote}>
@@ -27,7 +27,7 @@ export default function NavBar({main, optionFunction}) {
                     <FaPhoneAlt/>
                     <a href="tel:+0485313406">0485313406</a>
                 </div>
-                <div>
+                <div onClick={favFunction}>
                     <FaHeart/>
                 </div>
             </div>
