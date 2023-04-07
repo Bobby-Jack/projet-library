@@ -1,11 +1,11 @@
 import styles from './navbar.module.css'
 import { FaSearch, FaPhoneAlt, FaHeart } from 'react-icons/fa';
 
-export default function NavBar({main}) { 
+export default function NavBar({main, optionFunction}) { 
     return (
         <div className={styles.navbar}>
             <div className={styles.cote}>
-                <div className={styles.burger}>
+                <div className={styles.burger} onClick={optionFunction}>
                     <div className={styles.burgerLittle}></div>
                     <div className={styles.burgerBig}></div>
                     <div className={styles.burgerLittle}></div>

@@ -1,5 +1,7 @@
 body{
   margin: 0;
-  background-color: black;
-  
+  background-color: rgb(200, 115, 115);
+  width: 100vw;
+  overflow-x: none;
+  height: 200vh;
 }
