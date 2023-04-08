@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Layout from '@/component/layout'
 import Caroussel from '@/component/caroussel/caroussel'
+import BuySection from '@/component/buySection/buySection'
 
 export default function mainPage() {
     return (
@@ -13,6 +14,7 @@ export default function mainPage() {
       </Head>
       <Layout main={true}>
         <Caroussel/>
+        <BuySection/>
       </Layout>
     </>
     )
