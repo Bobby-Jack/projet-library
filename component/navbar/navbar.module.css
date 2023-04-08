@@ -1,11 +1,14 @@
 .navbar{
-    height: 50px;
+    height: 60px;
     width: 80vw;
     padding: 10px 10vw;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 3;
 }
 
 .cote{

@@ -63,10 +63,10 @@ export default function Caroussel() {
                             styles.content+' '+styles.toChild4}>
                 <div className={styles.child+' '+styles.child1}>
                     <div className={styles.left}>
-                        <p>LET'S MAKE THE BEST INVESTMENT</p>
-                        <p>There Is No Friend As Loyal As A Book</p>
-                        <p>lorem blal blal blal blal blal blal blal blal blal blal blal blal blal</p>
-                        <button>shop now</button>
+                        <p className={styles.headNote} >LET'S MAKE THE BEST INVESTMENT</p>
+                        <p className={styles.title}>There Is No Friend As Loyal As A Book</p>
+                        <p className={styles.titleNote}>lorem blal blal blal blal blal blal blal blal blal blal blal blal blal</p>
+                        <button className={styles.btn}><span>shop now</span></button>
                     </div>
                     <div className={styles.right}>
                         <Image  src={img01}/>
@@ -74,10 +74,10 @@ export default function Caroussel() {
                 </div>
                 <div className={styles.child+' '+styles.child1}>
                     <div className={styles.left}>
-                        <p>LET'S MAKE THE BEST INVESTMENT</p>
-                        <p>There Is No Friend As Loyal As A Book</p>
-                        <p>lorem blal blal blal blal blal blal blal blal blal blal blal blal blal</p>
-                        <button>shop now</button>
+                    <p className={styles.headNote} >LET'S MAKE THE BEST INVESTMENT</p>
+                        <p className={styles.title}>There Is No Friend As Loyal As A Book</p>
+                        <p className={styles.titleNote}>lorem blal blal blal blal blal blal blal blal blal blal blal blal blal</p>
+                        <button className={styles.btn}><span>shop now</span></button>
                     </div>
                     <div className={styles.right}>
                         <Image  src={img02}/>
@@ -85,10 +85,10 @@ export default function Caroussel() {
                 </div>
                 <div className={styles.child+' '+styles.child1}>
                     <div className={styles.left}>
-                        <p>LET'S MAKE THE BEST INVESTMENT</p>
-                        <p>There Is No Friend As Loyal As A Book</p>
-                        <p>lorem blal blal blal blal blal blal blal blal blal blal blal blal blal</p>
-                        <button>shop now</button>
+                        <p className={styles.headNote} >LET'S MAKE THE BEST INVESTMENT</p>
+                        <p className={styles.title}>There Is No Friend As Loyal As A Book</p>
+                        <p className={styles.titleNote}>lorem blal blal blal blal blal blal blal blal blal blal blal blal blal</p>
+                        <button className={styles.btn}><span>shop now</span></button>
                     </div>
                     <div className={styles.right}>
                         <Image  src={img03}/>
@@ -96,10 +96,10 @@ export default function Caroussel() {
                 </div>
                 <div className={styles.child+' '+styles.child1}>
                     <div className={styles.left}>
-                        <p>LET'S MAKE THE BEST INVESTMENT</p>
-                        <p>There Is No Friend As Loyal As A Book</p>
-                        <p>lorem blal blal blal blal blal blal blal blal blal blal blal blal blal</p>
-                        <button>shop now</button>
+                        <p className={styles.headNote} >LET'S MAKE THE BEST INVESTMENT</p>
+                        <p className={styles.title}>There Is No Friend As Loyal As A Book</p>
+                        <p className={styles.titleNote}>lorem blal blal blal blal blal blal blal blal blal blal blal blal blal</p>
+                        <button className={styles.btn}><span>shop now</span></button>
                     </div>
                     <div className={styles.right}>
                         <Image  src={img04}/>

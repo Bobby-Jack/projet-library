@@ -109,7 +109,6 @@
     border-bottom-right-radius: 5px;
     transition: 0.3s ease;
     z-index: 0;
-    
     transform: translateX(-115%) skew(20deg);
 }
 

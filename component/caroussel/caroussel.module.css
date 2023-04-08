@@ -1,5 +1,5 @@
 .caroussel{
-   height: 600px;
+   height: 660px;
    width: 100vw;
    overflow-y: hidden;
    overflow-x: hidden;
@@ -29,8 +29,74 @@
     height: 100%;
     width: 100vw;
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
 }
 
+
+
+.headNote{
+    color: #5A8F7B;
+    font-weight: bold;
+}
+
+.left{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    align-items: start;
+}
+
+.title{
+    font-size: 3.5em;
+    margin: 0;
+}
+
+.titleNote{
+    font-size: 1.8em;
+    color: rgb(108, 117, 125);
+    margin-bottom: 60px;
+}
+
+
+.btn{
+    background-color: rgb(50, 143, 123);
+    font-size: 1.1em;
+    padding: 10px 25px;
+    color: white;
+    transition: 0.3s ease;
+    border: none;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: end;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.btn span{
+    z-index: 2;
+}
+
+.btn::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 140%;
+    background-color: rgb(47, 72, 88);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: 0.3s ease;
+    z-index: 0;
+    transform: translateX(-115%) skew(20deg);
+}
+
+.btn:hover::after{
+    transform: translateX(-8%) skew(20deg);
+}
 
 .navigator{
     position: absolute;
