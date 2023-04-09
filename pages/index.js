@@ -1,12 +1,45 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import Layout from '@/component/layout'
 
-const inter = Inter({ subsets: ['latin'] })
+import Head from 'next/head'
+import styles from '../styles/Home.module.css'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginAsGuest, prout, logout, login } from '../store/features/accountSlice'
+import { useEffect } from 'react'
+import Link from 'next/link'
+
+
 
 export default function Home() {
+  const dispatch = useDispatch()
+  const connected = useSelector((state)=>state.account.connected)
+  const user = useSelector((state)=>state.account.connectedAccount)
+  const [loginActive, setLoginActive] = useState(false)
+  const [signinActive, setSignActive] = useState(false)
+  
+  const [nbAction, setNbAction] = useState(0)
+  const [userNameInputLogin, setuserNameInputLogin] = useState('')
+  const [passwordLogin, setPasswordLogin] = useState('')
+
+
+  
+  
+
+  function loginGuest() {
+    dispatch(loginAsGuest())
+    setLoginActive(false)
+  }
+  function tryLogOut() {
+    dispatch(logout())
+  }
+  function tryLogin() {
+    
+     dispatch(login({userInfo: userNameInputLogin, password: passwordLogin}))
+  }
+
+  
+  
+
   return (
     <>
       <Head>
@@ -15,9 +48,47 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout main={true}>
-        <h1>salut</h1>
-      </Layout>
+      
+        <div className={styles.main}>
+          {
+            connected ?
+            <div className={styles.alreadyLogin}>
+              <h1>You are connected as {user.username}</h1>
+              <span className={styles.link} onClick={tryLogOut}>Logout</span>
+              <Link className={styles.link} href={'/mainPage'}><h3>To the website</h3></Link>
+
+            </div>:
+            <>
+              <div className={loginActive?styles.login:styles.login+' '+styles.hide}>
+              <h1>Login:</h1>
+              <div className={styles.cross} onClick={()=>{setLoginActive(false)}}>X</div>
+              <input   onChange={(e)=>{setuserNameInputLogin(e.target.value)}} className={styles.input} placeholder='Please enter your userName or your Email'/>
+              <input  onChange={(e)=>{setPasswordLogin(e.target.value)}}  className={styles.input} placeholder='Please enter your password'/>
+              <button  className={styles.btn} onClick={tryLogin}>Login</button>
+            </div>
+            <div className={signinActive?styles.signin:styles.signin+' '+styles.hide}>
+              <h1>Signin:</h1>
+              <div className={styles.cross} onClick={()=>{setSignActive(false)}}>X</div>
+              <input  className={styles.input} placeholder='Please enter your userName'/>
+              <input  className={styles.input} placeholder='Please enter your Email'/>
+              <input  className={styles.input} placeholder='Please enter your password'/>
+              <input  className={styles.input} placeholder='Please confirm your password'/>
+              <button  className={styles.btn}>Sign in</button>
+            </div>
+            <div className={styles.welcome}>
+              <h1>Welcome to BOOKSHELF</h1>
+              <div className={styles.options}>
+                <span className={styles.link} onClick={()=>{setLoginActive(true)}}>Login</span>
+                <span className={styles.link} onClick={()=>{setSignActive(true)}}>Sign in</span>
+                <span className={styles.link} onClick={()=>{loginGuest()}}>login as guest</span>
+              </div>
+            </div>
+           
+            </> 
+          }
+          
+        </div>
+      
     </>
   )
 }
