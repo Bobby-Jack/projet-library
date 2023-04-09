@@ -3,6 +3,7 @@ import Layout from '@/component/layout'
 import Caroussel from '@/component/caroussel/caroussel'
 import BuySection from '@/component/buySection/buySection'
 import BookCard from '@/component/bookcard/bookCard'
+import styles from '../styles/mainPage.module.css'
 
 export async function getStaticProps() {
   const allJsonData = await fetch('https://example-data.draftbit.com/books')
@@ -28,12 +29,14 @@ export default function mainPage({allJsonData}) {
       <Layout main={true}>
         <Caroussel/>
         <BuySection/>
-        <section>
-        <ul>
+        <section className={styles.allBook}>
+            <div className={styles.title}>
+              <span>BOOKS GALLERY</span>
+              <h1>Popular Books</h1>
+            </div>
             {allJsonData.map(p =>{
               return <BookCard data={p}/>
             })}
-        </ul>
         </section>
       </Layout>
     </>

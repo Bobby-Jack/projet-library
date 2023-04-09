@@ -14,6 +14,7 @@ export default function Layout({children, main }) {
         setFavoris(!favoris)
     }
     return(
+        
         <div className={styles.layout}>
             <FavMenu active={favoris} closeFunction={toggleFavorisMenu}/>
             <OptionMenu active={option} closeFunction={toggleOptionMenu}/>

@@ -1,0 +1,20 @@
+.allBook{
+    width: 90%;
+    padding: 50px 5%;
+    background-color: rgb(240, 240, 240);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.title{
+    width: 100%;
+    text-align: center;
+}
+
+.title h1{
+    margin-top: 15px;
+    font-size: 3em;
+}
