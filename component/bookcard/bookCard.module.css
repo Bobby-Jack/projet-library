@@ -1,0 +1,101 @@
+.card{
+    height: 360px;
+    width: 280px;
+    background-color: white;
+    box-shadow: 0px 0px 15px rgb(206, 206, 206);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    text-align: center;
+
+}
+
+.img{
+    height: 70%;
+}
+
+.info{
+    position: absolute;
+    height: 25%;
+    padding: 5%;
+    width: 90%;
+    bottom: -45px;
+    transition: 0.4s ease-in-out;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rating{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rating span{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.star{
+    color: rgb(194, 194, 62);
+}
+
+.card:hover .info{
+    transform: translateY(-45px);
+}
+
+.heart, .goTo{
+    height: 40px;
+    width: 40px;
+    font-size: 1.3em;
+    border-radius: 50%;
+    position: absolute;
+    right: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+    transform: translateX(15px);
+    opacity: 0;
+}
+
+.card:hover .heart, .card:hover .goTo{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.heart{
+    background-color: rgb(181, 181, 181);
+    top: 5%;
+}
+
+.heart:hover, .heart.active, .heart:active{
+    background-color: #e44848;
+    color: white;
+}
+
+.heart::after{
+    content: '';
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: 2px solid #e4484800;
+    position: absolute;
+    transition: 0.1s ease;
+}
+
+.heart:active::after{
+    border: 2px solid #e44848;
+    transform: scale(1.5);
+}
+
+.goTo{
+    top: 20%;
+    background-color: #5A8F7B;
+    color: white;
+}

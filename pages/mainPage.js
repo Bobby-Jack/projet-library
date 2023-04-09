@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Layout from '@/component/layout'
 import Caroussel from '@/component/caroussel/caroussel'
 import BuySection from '@/component/buySection/buySection'
+import BookCard from '@/component/bookcard/bookCard'
 
 export async function getStaticProps() {
   const allJsonData = await fetch('https://example-data.draftbit.com/books')
@@ -30,7 +31,7 @@ export default function mainPage({allJsonData}) {
         <section>
         <ul>
             {allJsonData.map(p =>{
-              return <li>{p.title}</li>
+              return <BookCard data={p}/>
             })}
         </ul>
         </section>
