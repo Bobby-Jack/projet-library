@@ -5,6 +5,7 @@ import BuySection from '@/component/buySection/buySection'
 import BookCard from '@/component/bookcard/bookCard'
 import styles from '../styles/mainPage.module.css'
 
+
 import { useSelector, useDispatch } from 'react-redux'
 
 export async function getStaticProps() {
