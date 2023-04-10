@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     theme: "default",
     connected: false,
-    accounts: [{id:0, username:'admin', password:'123', email:'admin@gmail.com', chats:[{name:'chat1'},{name:'chat2'}], premium:true, chatsPremium:[]}],
+    allEmail: ['admin@gmail.com'],
+    accounts: [{id:0, username:'admin', password:'123', email:'admin@gmail.com', fav:[]}],
+    lastId: 0,
     connectedAccount: {},
 };
 
@@ -20,9 +22,7 @@ export const accountSlice = createSlice({
                     state.connectedAccount = {
                         username: state.accounts[index].username,
                         email:state.accounts[index].email,
-                        chats:state.accounts[index].chats,
-                        premium:state.accounts[index].premium,
-                        chatsPremium: state.accounts[index].chatsPremium}
+                        fav:state.accounts[index].fav,}
                         state.connected = true;
                         valide = true
                 }
@@ -30,7 +30,7 @@ export const accountSlice = createSlice({
 
         },
         loginAsGuest: (state)=>{
-            state.connectedAccount = {guest:true, username: 'guest', premium: false, chats: []}
+            state.connectedAccount = {guest:true, username: 'guest', fav: []}
             state.connected = true;
         },
         logout: (state)=>{
@@ -40,11 +40,28 @@ export const accountSlice = createSlice({
 
         prout: ()=>{
             console.log('prout');
+        },
+        signin: (state, action)=>{
+            let notUsed = true;
+            state.accounts.forEach(account => {
+                if (account.email == action.payload.email) {
+                    notUsed = false
+                }
+            });
+            if (notUsed) {
+                state.accounts = [...state.accounts,{id:state.lastId+1,
+                                                    username:action.payload.username,
+                                                    password: action.payload.password,
+                                                    email: action.payload.email,
+                                                    fav: []}]
+                state.lastId = state.lastId+1
+                state.allEmail.push(action.payload.email)
+            }
         }
 
 
     }
 });
 
-export const { login , logout, loginAsGuest, prout } = accountSlice.actions
+export const { login , logout, loginAsGuest, prout, signin } = accountSlice.actions
 export default accountSlice.reducer

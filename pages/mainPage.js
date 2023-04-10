@@ -5,6 +5,8 @@ import BuySection from '@/component/buySection/buySection'
 import BookCard from '@/component/bookcard/bookCard'
 import styles from '../styles/mainPage.module.css'
 
+import { useSelector, useDispatch } from 'react-redux'
+
 export async function getStaticProps() {
   const allJsonData = await fetch('https://example-data.draftbit.com/books')
     .then(r => r.json())
@@ -17,6 +19,7 @@ export async function getStaticProps() {
 
 export default function mainPage({allJsonData}) {
     console.log(allJsonData);
+    const connected  = useSelector((state)=>state.account.connected)
   
     return (
         <>
@@ -26,7 +29,8 @@ export default function mainPage({allJsonData}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout main={true}>
+      {connected ?
+        <Layout main={true}>
         <Caroussel/>
         <BuySection/>
         <section className={styles.allBook}>
@@ -38,7 +42,10 @@ export default function mainPage({allJsonData}) {
               return <BookCard data={p}/>
             })}
         </section>
-      </Layout>
+      </Layout> :
+      <h1>tu n'est pas connecté :/</h1>
+      }
+      
     </>
     )
 }

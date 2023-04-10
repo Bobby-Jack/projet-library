@@ -4,10 +4,9 @@ import styles from '../styles/Home.module.css'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
-import { loginAsGuest, prout, logout, login } from '../store/features/accountSlice'
+import { loginAsGuest, signin, logout, login } from '../store/features/accountSlice'
 import { useEffect } from 'react'
 import Link from 'next/link'
-
 
 
 export default function Home() {
@@ -16,6 +15,15 @@ export default function Home() {
   const user = useSelector((state)=>state.account.connectedAccount)
   const [loginActive, setLoginActive] = useState(false)
   const [signinActive, setSignActive] = useState(false)
+  const allEmail = useSelector((state)=>state.account.allEmail)
+
+
+
+  const [signUserName, setSignUserName] = useState('')
+  const [signEmail, setSignEmail] = useState('')
+  const [signPsw, setSignPsw] = useState('')
+  const [signPswConfirm, setSignPswConfirm] = useState('')
+
   
   const [nbAction, setNbAction] = useState(0)
   const [userNameInputLogin, setuserNameInputLogin] = useState('')
@@ -33,10 +41,38 @@ export default function Home() {
     dispatch(logout())
   }
   function tryLogin() {
-    
      dispatch(login({userInfo: userNameInputLogin, password: passwordLogin}))
   }
 
+  function clearSignState() {
+    setSignEmail('')
+    setSignPsw('')
+    setSignUserName('')
+    setSignPswConfirm('')
+  }
+
+  function trySignIn() {
+    let valid = true;
+    if (!signEmail.includes('@') || allEmail.includes(signEmail)) {
+      console.log('email invalid');
+      valid = false
+    }
+    if (signUserName.length < 3) {
+      console.log('username too short');
+      valid = false
+    }
+    if (signPsw.length<8 || signPsw!=signPswConfirm) {
+      console.log('psw invalid');
+      valid = false
+    }
+    if (valid) {
+      console.log('new user try to create');
+      dispatch(signin({username: signUserName, email:signEmail, password: signPsw}))
+      clearSignState()
+    }else{
+      console.log('new user creation failed');
+    }
+  }
   
   
 
@@ -69,11 +105,11 @@ export default function Home() {
             <div className={signinActive?styles.signin:styles.signin+' '+styles.hide}>
               <h1>Signin:</h1>
               <div className={styles.cross} onClick={()=>{setSignActive(false)}}>X</div>
-              <input  className={styles.input} placeholder='Please enter your userName'/>
-              <input  className={styles.input} placeholder='Please enter your Email'/>
-              <input  className={styles.input} placeholder='Please enter your password'/>
-              <input  className={styles.input} placeholder='Please confirm your password'/>
-              <button  className={styles.btn}>Sign in</button>
+              <input value={signUserName} onChange={(e)=>{setSignUserName(e.target.value)}}  className={styles.input} placeholder='Please enter your userName'/>
+              <input value={signEmail} onChange={(e)=>{setSignEmail(e.target.value)}}  className={styles.input} placeholder='Please enter your Email'/>
+              <input value={signPsw} type='password' onChange={(e)=>{setSignPsw(e.target.value)}}  className={styles.input} placeholder='Please enter your password'/>
+              <input value={signPswConfirm} type='password' onChange={(e)=>{setSignPswConfirm(e.target.value)}}  className={signPsw==signPswConfirm? styles.input: styles.input+" "+styles.badInput} placeholder='Please confirm your password'/>
+              <button onClick={trySignIn}  className={styles.btn}>Sign in</button>
             </div>
             <div className={styles.welcome}>
               <h1>Welcome to BOOKSHELF</h1>
