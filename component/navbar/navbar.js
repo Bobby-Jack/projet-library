@@ -1,7 +1,7 @@
 import styles from './navbar.module.css'
 import { FaSearch, FaPhoneAlt, FaHeart } from 'react-icons/fa';
 
-export default function NavBar({main, optionFunction, favFunction}) { 
+export default function NavBar({main, optionFunction, favFunction, inputVal, setInputVal}) { 
     return (
         <div className={styles.navbar}>
             <div className={styles.cote}>
@@ -16,7 +16,11 @@ export default function NavBar({main, optionFunction, favFunction}) {
                 main ?
                 <div className={styles.center}>
                     <FaSearch className={styles.search}/>
-                    <input className={styles.input} type="text" placeholder='Search your book here'/>
+                    <input value={inputVal}
+                            onChange={(e)=>{setInputVal(e.target.value.toLowerCase())}}
+                            className={styles.input}
+                            type="text"
+                            placeholder='Search your book here'/>
                 </div>
                 :
                 null

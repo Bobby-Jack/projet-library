@@ -4,7 +4,7 @@ import Navbar from './navbar/navbar'
 import FavMenu from './optionMenu/FavMenu'
 import OptionMenu from './optionMenu/optionMenu'
 import { useState } from 'react'
-export default function Layout({children, main }) {
+export default function Layout({children, main, inputVal, setInputVal }) {
     const [option, setOption] = useState(false)
     const [favoris, setFavoris] = useState(false)
     function toggleOptionMenu() {
@@ -19,7 +19,7 @@ export default function Layout({children, main }) {
             <FavMenu active={favoris} closeFunction={toggleFavorisMenu}/>
             <OptionMenu active={option} closeFunction={toggleOptionMenu}/>
             {/* le navbar recevra des methode de modifiactation d'état des usesate indique plus bas  */}
-            <Navbar main={main} optionFunction={toggleOptionMenu} favFunction={toggleFavorisMenu}/>
+            <Navbar inputVal={inputVal} setInputVal={setInputVal}  main={main} optionFunction={toggleOptionMenu} favFunction={toggleFavorisMenu}/>
             {/* ajout des deux menu connecté par des usestate d'activation */}
             <div className={styles.body}>
                 {children}

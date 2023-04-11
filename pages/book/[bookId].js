@@ -27,8 +27,8 @@ export default function BookName({ allJsonData }) {
       <div className={styles.main}>
         <img className={styles.img} src={allJsonData[0].image_url}/>
         <div className={styles.infos}>
-          <h1>{allJsonData[0].title}</h1>
-          <span>By: <b><i>{allJsonData[0].authors}</i></b></span>
+          <h1 className='textCenter'>{allJsonData[0].title}</h1>
+          <p className='textCenter'>By: <b><i>{allJsonData[0].authors}</i></b></p>
           <div className={styles.description}>{allJsonData[0].description}</div>
           <div className={styles.table}>
             <div className={styles.row}>
@@ -73,7 +73,7 @@ export default function BookName({ allJsonData }) {
             </div>
             <div className={styles.row}>
               <span>Rating:</span>
-              <span className={allJsonData[0].rating>=4?styles.green:''}>
+              <span className={allJsonData[0].rating>=4?styles.green: allJsonData[0].rating<2.5?styles.red:''}>
                 {
                   allJsonData[0].rating ?
                   allJsonData[0].rating+' / 5' :

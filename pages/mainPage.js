@@ -6,6 +6,9 @@ import BookCard from '@/component/bookcard/bookCard'
 import styles from '../styles/mainPage.module.css'
 
 
+import { useState } from 'react'
+
+
 import { useSelector, useDispatch } from 'react-redux'
 
 export async function getStaticProps() {
@@ -21,6 +24,7 @@ export async function getStaticProps() {
 export default function mainPage({allJsonData}) {
     console.log(allJsonData);
     const connected  = useSelector((state)=>state.account.connected)
+    const [inputValue, setInputValue] = useState('')
   
     return (
         <>
@@ -31,7 +35,7 @@ export default function mainPage({allJsonData}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {connected ?
-        <Layout main={true}>
+        <Layout main={true} inputVal={inputValue} setInputVal={setInputValue}>
         <Caroussel/>
         <BuySection/>
         <section className={styles.allBook}>
@@ -39,9 +43,12 @@ export default function mainPage({allJsonData}) {
               <span>BOOKS GALLERY</span>
               <h1>Popular Books</h1>
             </div>
-            {allJsonData.map(p =>{
-              return <BookCard data={p}/>
-            })}
+            {allJsonData.map((p) =>(
+              parseFloat(p.rating) >= 4.2 && p.title.toLowerCase().includes(inputValue) ?
+              <BookCard data={p}/>
+              :
+              null
+            ))}
         </section>
       </Layout> :
       <h1>tu n'est pas connecté :/</h1>
