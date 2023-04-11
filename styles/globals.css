@@ -16,3 +16,29 @@ body{
 .textEnd{
   text-align: end;
 }
+
+
+.btnSimple{
+  margin: 0px 10%;
+  background-color: rgb(50, 143, 123);
+  font-size: 1.1em;
+  padding: 10px 25px;
+  color: white;
+  transition: 0.3s ease;
+  border: none;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: end;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+
+
+
+
+.btnSimple:hover{
+  background-color: rgb(47, 72, 88);
+}

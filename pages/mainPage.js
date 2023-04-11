@@ -25,6 +25,13 @@ export default function mainPage({allJsonData}) {
     console.log(allJsonData);
     const connected  = useSelector((state)=>state.account.connected)
     const [inputValue, setInputValue] = useState('')
+    const [indexMax, setIndexMax] = useState(50)
+
+    function loadMore() {
+      if (indexMax<=250) {
+        setIndexMax(indexMax+100)
+      }
+    }
   
     return (
         <>
@@ -43,12 +50,21 @@ export default function mainPage({allJsonData}) {
               <span>BOOKS GALLERY</span>
               <h1>Popular Books</h1>
             </div>
-            {allJsonData.map((p) =>(
-              parseFloat(p.rating) >= 4.2 && p.title.toLowerCase().includes(inputValue) ?
-              <BookCard data={p}/>
+            {allJsonData.map((p, index) =>(
+              parseFloat(p.rating) >= 4.2 && p.title.toLowerCase().includes(inputValue) && index<=indexMax ?
+              <BookCard key={index} data={p}/>
               :
               null
             ))}
+            {
+              indexMax < 250 ?
+                <button onClick={loadMore} className='btnSimple textCenter'>
+                   load more
+                </button>
+              :
+              null
+            }
+             
         </section>
       </Layout> :
       <h1>tu n'est pas connecté :/</h1>
