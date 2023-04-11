@@ -57,11 +57,30 @@ export const accountSlice = createSlice({
                 state.lastId = state.lastId+1
                 state.allEmail.push(action.payload.email)
             }
+        },
+        addFav: (state, action)=>{
+            for (let index = 0; index < state.accounts.length; index++) {
+                if (state.accounts[index].id == state.connectedAccount.id) {
+                    state.accounts[index].fav.push(action.payload);
+                    state.connectedAccount.fav.push(action.payload);
+                }
+            }
+        }, 
+        removeFav: (state, action)=>{
+            for (let index = 0; index < state.accounts.length; index++) {
+                if (state.accounts[index].id == state.connectedAccount.id) {
+                    const newVal = state.accounts[index].fav.filter(book=>book.id!=action.payload)
+                    state.accounts[index].fav = newVal
+                    state.connectedAccount.fav = newVal
+                }
+                
+            }
         }
+        
 
 
     }
 });
 
-export const { login , logout, loginAsGuest, prout, signin } = accountSlice.actions
+export const { login , logout, loginAsGuest, prout, signin, addFav, removeFav } = accountSlice.actions
 export default accountSlice.reducer
