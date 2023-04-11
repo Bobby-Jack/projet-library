@@ -12,6 +12,16 @@ export default function BookCard({data, alt}) {
     function goTo() {
         router.push('/book/'+data.id)
     }
+
+    function isInFav() {
+        let result = false; 
+        fav.forEach(element => {
+            if (element.id == data.id) {
+                result = true
+            }
+        });
+        return result
+    }
     
     function handleFav(book) {
         console.log('handleBook: start');
@@ -36,7 +46,8 @@ export default function BookCard({data, alt}) {
     
     return(
         <div className={styles.card}>
-            <div className={fav.includes(data)?styles.heart+' '+styles.active: styles.heart} onClick={()=>{handleFav(data)}}><FaHeart/></div>
+            <div className={isInFav()?styles.heart+' '+styles.active: styles.heart}
+                    onClick={()=>{handleFav(data)}}><FaHeart/></div>
             <div className={styles.goTo} onClick={goTo}><FaBook/></div>
             <div className={styles.info}>
                 <span className={styles.title}>{data.title}</span>
