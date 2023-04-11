@@ -12,6 +12,7 @@ export default function BookCard({data, alt}) {
     function goTo() {
         router.push('/book/'+data.id)
     }
+    
     function handleFav(book) {
         console.log('handleBook: start');
         let alreadyIn = false
@@ -35,7 +36,7 @@ export default function BookCard({data, alt}) {
     
     return(
         <div className={styles.card}>
-            <div className={styles.heart} onClick={()=>{handleFav(data)}}><FaHeart/></div>
+            <div className={fav.includes(data)?styles.heart+' '+styles.active: styles.heart} onClick={()=>{handleFav(data)}}><FaHeart/></div>
             <div className={styles.goTo} onClick={goTo}><FaBook/></div>
             <div className={styles.info}>
                 <span className={styles.title}>{data.title}</span>
