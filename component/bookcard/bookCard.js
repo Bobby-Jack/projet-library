@@ -6,6 +6,7 @@ import { removeFav, addFav } from '@/store/features/accountSlice'
 
 export default function BookCard({data, alt}) {
     const connected = useSelector((state)=>state.account.connected)
+    const connectedAccount = useSelector((state)=>state.account.connectedAccount) 
     const fav = useSelector((state)=>state.account.connectedAccount.fav)
     const dispatch = useDispatch()
     const router = useRouter()
@@ -14,12 +15,17 @@ export default function BookCard({data, alt}) {
     }
 
     function isInFav() {
+        console.log(connectedAccount);
         let result = false; 
-        fav.forEach(element => {
-            if (element.id == data.id) {
-                result = true
-            }
-        });
+        if (connectedAccount) {
+            
+            fav.forEach(element => {
+                if (element.id == data.id) {
+                    result = true
+                }
+            });
+        }
+        
         return result
     }
     

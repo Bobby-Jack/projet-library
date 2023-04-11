@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const initialState = {
     theme: "default",
@@ -66,7 +68,8 @@ export const accountSlice = createSlice({
                     state.connectedAccount.fav.push(action.payload);
                 }
             }
-        }, 
+        },
+
         removeFav: (state, action)=>{
             for (let index = 0; index < state.accounts.length; index++) {
                 if (state.accounts[index].email == state.connectedAccount.email) {
@@ -74,14 +77,18 @@ export const accountSlice = createSlice({
                     state.accounts[index].fav = newVal
                     state.connectedAccount.fav = newVal
                 }
-                
+
             }
         }
-        
-
-
     }
 });
 
-export const { login , logout, loginAsGuest, prout, signin, addFav, removeFav } = accountSlice.actions
-export default accountSlice.reducer
+const persistConfig = {
+  key: 'root',
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, accountSlice.reducer);
+
+export const { login, logout, loginAsGuest, prout, signin, addFav, removeFav } = accountSlice.actions;
+export default persistedReducer;
