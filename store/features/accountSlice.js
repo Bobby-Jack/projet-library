@@ -59,8 +59,9 @@ export const accountSlice = createSlice({
             }
         },
         addFav: (state, action)=>{
+            console.log('addFav:Start');
             for (let index = 0; index < state.accounts.length; index++) {
-                if (state.accounts[index].id == state.connectedAccount.id) {
+                if (state.accounts[index].email == state.connectedAccount.email) {
                     state.accounts[index].fav.push(action.payload);
                     state.connectedAccount.fav.push(action.payload);
                 }
@@ -68,7 +69,7 @@ export const accountSlice = createSlice({
         }, 
         removeFav: (state, action)=>{
             for (let index = 0; index < state.accounts.length; index++) {
-                if (state.accounts[index].id == state.connectedAccount.id) {
+                if (state.accounts[index].email == state.connectedAccount.email) {
                     const newVal = state.accounts[index].fav.filter(book=>book.id!=action.payload)
                     state.accounts[index].fav = newVal
                     state.connectedAccount.fav = newVal

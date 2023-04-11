@@ -26,6 +26,7 @@
 
 .menu2{
     right: 0;
+    overflow-y: scroll;
 }
 
 .menu.off{
@@ -50,12 +51,27 @@
 }
 
 .content{
+    height: fit-content;
     display: flex;
     flex-direction: column;
     width: 80%;
     margin: 30px auto;
     gap: 25px;
     font-size: 1.2em;
+}
+
+.miniCard{
+    height: 70px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.miniCard img{
+    height: 100%;
 }
 
 .noFav{
@@ -83,4 +99,36 @@
 
 .content *:hover, .quit:hover{
     color: #5A8F7B;
+}
+
+.removeFav, .goTo{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: gray;
+    color: black;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+    opacity: 0;
+}
+
+.miniCard:hover .removeFav, .miniCard:hover .goTo{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.removeFav{
+    left: 15%;
+    transform: translateX(-10px);
+}
+.removeFav:hover, .goTo:hover{
+    color: white !important;
+    background-color: #5A8F7B;
+}
+.goTo{
+    right: 15%;
+    transform: translateX(10px);
 }
