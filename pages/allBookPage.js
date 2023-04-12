@@ -21,7 +21,8 @@ export async function getStaticProps() {
 
 
 export default function AllBookPage({allJsonData}) {
-  
+
+    const [allBook, setAllBook] = useState(allJsonData)
     const [cat, setCat] = useState('')
     const [minRat, setMinRat] = useState(0)
     const [search, setSearch] = useState('')
@@ -30,6 +31,33 @@ export default function AllBookPage({allJsonData}) {
 
     const connectedAccount = useSelector((state)=>state.account.connectedAccount)
     console.log(connectedAccount);
+
+
+    function handleSortChange(e) {
+      const value = e.target.value;
+      let sortedLivres;
+      if (value == "titleCr") {
+        sortedLivres = allBook.slice().sort((a, b) => {
+          if (!a.title || !b.title) return 0;
+          return a.title.localeCompare(b.title);
+        });
+      } else if (value == "titleDe") {
+        sortedLivres = allBook.slice().sort((a, b) => {
+          if (!a.title || !b.title) return 0;
+          return b.title.localeCompare(a.title);
+        });
+      } else if (value == "ratingDe") {
+        sortedLivres = allBook.slice().sort((a, b) => b.rating - a.rating);
+      } else if (value == "ratingCr") {
+        sortedLivres = allBook.slice().sort((a, b) => a.rating - b.rating);
+      } else {
+        sortedLivres = allBook;
+      }
+      setAllBook(sortedLivres);
+    }
+
+
+
   return (
     <Layout>
         <div className={styles.main}>
@@ -68,18 +96,18 @@ export default function AllBookPage({allJsonData}) {
                   </div>
                 </div>
                 <div className={styles.triOption}>
-                    <select>
-                      <option value='ratingCr'>rating</option>
-                      <option value='ratingDe'>rating</option>
-                      <option value='titleCr'><AiOutlineSortAscending/></option>
-                      <option value='titleDe'><AiOutlineSortDescending/></option>
+                    <select onChange={handleSortChange}>
+                      <option value='ratingCr'>rating to up</option>
+                      <option value='ratingDe'>rating to down</option>
+                      <option value='titleCr'>title a-z</option>
+                      <option value='titleDe'>title z-a</option>
                     </select>
                 </div>
               </div>
               <div className={styles.all}>
                 
                 {
-                    allJsonData.map((p)=>{
+                    allBook.map((p)=>{
                       if (p.genres) {
                         if (p.genres.toLowerCase().includes(cat)) {
                           if (p.rating >= minRat) {

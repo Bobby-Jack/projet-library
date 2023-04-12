@@ -84,7 +84,9 @@ export default function BookCard({data, alt}) {
                 :
                 null
             }
-            
+            <div className={styles.goToBook} onClick={goTo}>
+                <FaBook/>
+            </div>
             <img  className={styles.img} src={data.image_url}/>
             <div className={styles.cardAltInfo}>
                 <h2>{data.title}</h2>

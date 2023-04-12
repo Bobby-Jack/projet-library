@@ -32,7 +32,7 @@
     color: black;
     cursor: pointer;
     position: absolute;
-    left: 14%;
+    left: 18%;
     bottom: 10%;
     transition: 0.3s ease;
 
@@ -41,6 +41,22 @@
 .favAlt:hover, .favAlt.active{
     background-color: #e44848;
     color: white;
+}
+
+.goToBook{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color:#5A8F7B ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    left: 9%;
+    bottom: 10%;
+    transition: 0.3s ease;
 }
 
 
