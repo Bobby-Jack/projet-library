@@ -10,7 +10,7 @@ export default function NavBar({main, optionFunction, favFunction, inputVal, set
                     <div className={styles.burgerBig}></div>
                     <div className={styles.burgerLittle}></div>
                 </div>
-                <h2>BOOKSHELF.</h2>
+                <h2 className={styles.title}>BOOKSHELF.</h2>
             </div>
             {
                 main ?
@@ -27,7 +27,7 @@ export default function NavBar({main, optionFunction, favFunction, inputVal, set
             }
             
             <div className={styles.cote}>
-                <div className={styles.phone}>
+                <div className={styles.phone+' '+styles.title}>
                     <FaPhoneAlt/>
                     <a href="tel:+0485313406">0485313406</a>
                 </div>

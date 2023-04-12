@@ -1,10 +1,10 @@
-import styles from './bookCard.module.css'
+import styles from './bookCardAlt.module.css'
 import {FaStar, FaHeart, FaBook} from 'react-icons/fa'
 import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeFav, addFav } from '@/store/features/accountSlice'
 
-export default function BookCard({data, alt}) {
+export default function BookCardAlt({data, alt}) {
     const connected = useSelector((state)=>state.account.connected)
     const connectedAccount = useSelector((state)=>state.account.connectedAccount) 
     const dispatch = useDispatch()
@@ -49,8 +49,6 @@ export default function BookCard({data, alt}) {
     }
     
     return(
-        
-        !alt ?
         <div className={styles.card}>
             {
                 connected ?
@@ -72,25 +70,6 @@ export default function BookCard({data, alt}) {
                 
             </div>
             <img  className={styles.img} src={data.image_url}/>
-        </div>
-        :
-        <div className={styles.cardAlt}>
-            {
-                connected ?
-                <div className={isInFav()?styles.favAlt+' '+styles.active: styles.favAlt}
-                    onClick={()=>{handleFav(data)}}>
-                    <FaHeart/>
-                </div>
-                :
-                null
-            }
-            
-            <img  className={styles.img} src={data.image_url}/>
-            <div className={styles.cardAltInfo}>
-                <h2>{data.title}</h2>
-                <span>By: <b>{data.authors}</b></span>
-                <p><i>{data.description}</i></p>
-            </div>
         </div>
     )
 }
