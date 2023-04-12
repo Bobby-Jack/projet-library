@@ -99,3 +99,10 @@
     background-color: #e44848;
     color: white;
 }
+
+@media screen and (max-width: 800px){
+    .heart{
+        left: 45%;
+        top: -30px;
+    }
+}

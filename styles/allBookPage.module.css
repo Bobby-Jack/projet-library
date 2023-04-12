@@ -100,3 +100,14 @@
     border: 1px solid gainsboro;
     background-color: gainsboro;
 }
+
+@media screen and (max-width: 800px) {
+    .filter{
+        min-height: 300px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .right{
+        width: 90%;
+    }
+}
