@@ -87,6 +87,9 @@ export default function BookCard({data, alt}) {
             <div className={styles.goToBook} onClick={goTo}>
                 <FaBook/>
             </div>
+            <div className={styles.ratingAlt}>
+                {data.rating} / 5 <FaStar/>
+            </div>
             <img  className={styles.img} src={data.image_url}/>
             <div className={styles.cardAltInfo}>
                 <h2>{data.title}</h2>

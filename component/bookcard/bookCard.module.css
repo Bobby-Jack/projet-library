@@ -43,6 +43,16 @@
     color: white;
 }
 
+.ratingAlt{
+    position: absolute;
+    background-color: white;
+    display: flex;
+    padding: 2px 5px ;
+    border-radius: 12px;
+    top: 13%;
+    left: 13%;
+}
+
 .goToBook{
     height: 50px;
     width: 50px;
