@@ -41,7 +41,6 @@ export default function mainPage({allJsonData}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {connected ?
         <Layout main={true} inputVal={inputValue} setInputVal={setInputValue}>
         <Caroussel/>
         <BuySection/>
@@ -66,9 +65,7 @@ export default function mainPage({allJsonData}) {
             }
              
         </section>
-      </Layout> :
-      <h1>tu n'est pas connecté :/</h1>
-      }
+      </Layout> 
       
     </>
     )

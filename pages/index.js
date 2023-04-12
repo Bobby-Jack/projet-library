@@ -116,7 +116,7 @@ export default function Home() {
               <div className={styles.options}>
                 <span className={styles.link} onClick={()=>{setLoginActive(true)}}>Login</span>
                 <span className={styles.link} onClick={()=>{setSignActive(true)}}>Sign in</span>
-                <span className={styles.link} onClick={()=>{loginGuest()}}>login as guest</span>
+                <Link className={styles.link} href={'/mainPage'}>access to website</Link>
               </div>
             </div>
            

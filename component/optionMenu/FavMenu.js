@@ -13,7 +13,7 @@ import BookCard from '../bookcard/bookCard';
 
 export default function FavMenu({active, closeFunction}) {
     const connected = useSelector((state)=>state.account.connected)
-    const fav = useSelector((state)=>state.account.connectedAccount.fav)
+    const connectedAccount = useSelector((state)=>state.account.connectedAccount)
     const dispatch = useDispatch()
     const router = useRouter()
     function goTo(id) {
@@ -33,8 +33,8 @@ export default function FavMenu({active, closeFunction}) {
                 <div className={styles.content}>
                     
                         {
-                            connected && fav.length>0 ?
-                                fav.map((book)=>(
+                            connected ?
+                            connectedAccount.fav.map((book)=>(
                                     <div className={styles.miniCard}>
                                         <div className={styles.removeFav} onClick={()=>{dispatch(removeFav(book.id))}}><FaHeartBroken/></div>
                                         <div className={styles.goTo} onClick={()=>{goTo(book.id)}}><FaBook/></div>

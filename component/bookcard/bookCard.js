@@ -7,7 +7,6 @@ import { removeFav, addFav } from '@/store/features/accountSlice'
 export default function BookCard({data, alt}) {
     const connected = useSelector((state)=>state.account.connected)
     const connectedAccount = useSelector((state)=>state.account.connectedAccount) 
-    const fav = useSelector((state)=>state.account.connectedAccount.fav)
     const dispatch = useDispatch()
     const router = useRouter()
     function goTo() {
@@ -18,8 +17,7 @@ export default function BookCard({data, alt}) {
         console.log(connectedAccount);
         let result = false; 
         if (connectedAccount) {
-            
-            fav.forEach(element => {
+            connectedAccount.fav.forEach(element => {
                 if (element.id == data.id) {
                     result = true
                 }
@@ -34,7 +32,7 @@ export default function BookCard({data, alt}) {
         let alreadyIn = false
         if (connected) {
             console.log('handleBook: connected=true');
-            fav.forEach(element => {
+            connectedAccount.fav.forEach(element => {
                 console.log(element);
                 if (element.id == book.id) {
                     alreadyIn = true
@@ -52,8 +50,14 @@ export default function BookCard({data, alt}) {
     
     return(
         <div className={styles.card}>
-            <div className={isInFav()?styles.heart+' '+styles.active: styles.heart}
-                    onClick={()=>{handleFav(data)}}><FaHeart/></div>
+            {
+                connected ?
+                <div className={isInFav()?styles.heart+' '+styles.active: styles.heart}
+                    onClick={()=>{handleFav(data)}}><FaHeart/>
+                </div>
+                :
+                null
+            }
             <div className={styles.goTo} onClick={goTo}><FaBook/></div>
             <div className={styles.info}>
                 <span className={styles.title}>{data.title}</span>

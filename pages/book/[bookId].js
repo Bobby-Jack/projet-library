@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
 export default function BookName({ allJsonData, }) {
   const router = useRouter();
   const connected = useSelector((state)=>state.account.connected)
-  const fav = useSelector((state)=>state.account.connectedAccount.fav)
+  const connectedAccount = useSelector((state)=>state.account.connectedAccount)
   const dispatch = useDispatch()
   const { bookId } = router.query;
   const genres = allJsonData[0].genres.split(', ')
@@ -28,12 +28,15 @@ export default function BookName({ allJsonData, }) {
 
 
   function isInFav() {
-    let result = false; 
-    fav.forEach(element => {
+    let result = false;
+    if (connected) {
+      connectedAccount.fav.forEach(element => {
         if (element.id == allJsonData[0].id) {
             result = true
         }
     });
+    } 
+    
     return result
 }
 
@@ -42,7 +45,7 @@ export default function BookName({ allJsonData, }) {
     let alreadyIn = false
     if (connected) {
         console.log('handleBook: connected=true');
-        fav.forEach(element => {
+        connectedAccount.fav.forEach(element => {
             console.log(element);
             if (element.id == book.id) {
                 alreadyIn = true
@@ -69,8 +72,14 @@ export default function BookName({ allJsonData, }) {
       <div className={styles.main}>
         <img className={styles.img} src={allJsonData[0].image_url}/>
         <div className={styles.infos}>
-          <div className={isInFav(allJsonData[0])?styles.heart+' '+styles.active: styles.heart}
+          {
+            connected ?
+            <div className={isInFav(allJsonData[0])?styles.heart+' '+styles.active: styles.heart}
                 onClick={()=>{handleFav(allJsonData[0])}}><FaHeart/></div>
+            :
+            null
+          }
+          
           <h1 className='textCenter'>{allJsonData[0].title}</h1>
           <p className='textCenter'>By: <b><i>{allJsonData[0].authors}</i></b></p>
           <div className={styles.description}>{allJsonData[0].description}</div>
