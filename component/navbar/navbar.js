@@ -31,7 +31,7 @@ export default function NavBar({main, optionFunction, favFunction, inputVal, set
                     <FaPhoneAlt/>
                     <a href="tel:+0485313406">0485313406</a>
                 </div>
-                <div onClick={favFunction}>
+                <div className={styles.favBtn} onClick={favFunction}>
                     <FaHeart/>
                 </div>
             </div>
