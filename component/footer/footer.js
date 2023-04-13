@@ -66,7 +66,7 @@ export default function Footer() {
                 <hr/>
                 <div className={styles.lastRow}>
                     <h3>Bookshelf</h3>       
-                    <span>© 2023 All right reserved. Made with love by <FaHeart/>  ThemeAtelier</span>       
+                    <span>© 2023 All right reserved. Made with love by <FaHeart/>  Ryad</span>       
                 </div>
             </div>
         </div>
