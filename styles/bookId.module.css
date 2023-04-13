@@ -95,10 +95,21 @@
 
 
 
-.heart:hover, .heart.active, .heart:active{
+.heart.active{
     background-color: #e44848;
     color: white;
 }
+
+.heart:active{
+    transform: scale(1.3);
+}
+.heart.active:active{
+    transform: scale(0.8);
+    background-color: rgb(181, 181, 181);
+    color: black;
+}
+
+
 
 @media screen and (max-width: 800px){
     .heart{
