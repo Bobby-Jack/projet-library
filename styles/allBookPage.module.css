@@ -12,6 +12,14 @@
     width: 60%;
     padding: 0px 5%;
 }
+
+.loading{
+    height: 100vh;
+    width: 100vw;
+    background-color:palevioletred;
+}
+
+
 .all{
     background-color: white;
     height: 90vh;
@@ -109,5 +117,14 @@
     }
     .right{
         width: 90%;
+    }
+
+    .aspects{
+        gap: 35px;
+    }
+
+    .btnAsp{
+        height: 50px;
+        width: 50px;
     }
 }

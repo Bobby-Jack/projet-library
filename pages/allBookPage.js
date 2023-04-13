@@ -1,5 +1,5 @@
 import Layout from '@/component/layout'
-import React from 'react'
+import React, { Suspense } from 'react'
 import styles from '../styles/allBookPage.module.css'
 import { useState } from 'react'
 import BookCard from '@/component/bookcard/bookCard'
@@ -8,6 +8,8 @@ import { AiOutlineSortAscending, AiOutlineSortDescending } from "react-icons/ai"
 import { useSelector } from 'react-redux'
 import { BiMenu } from "react-icons/bi";
 import { BiCheckboxSquare } from "react-icons/bi";
+import { useRouter } from 'next/router'
+import Loading from '@/component/loading'
 
 export async function getStaticProps() {
     const allJsonData = await fetch('https://example-data.draftbit.com/books')
@@ -27,6 +29,7 @@ export default function AllBookPage({allJsonData}) {
     const [minRat, setMinRat] = useState(0)
     const [search, setSearch] = useState('')
     const [alt, setAlt] = useState(false)
+    const router = useRouter()
 
 
     const connectedAccount = useSelector((state)=>state.account.connectedAccount)
@@ -57,9 +60,13 @@ export default function AllBookPage({allJsonData}) {
     }
 
 
-
+    
   return (
+    router.isFallback ?
+    <div className='loading'>Loading...</div>
+    :
     <Layout>
+      <Suspense fallback={<Loading/>}/>
         <div className={styles.main}>
             <div className={styles.filter}>
                 <input className={styles.input} value={search} onChange={(e)=>setSearch(e.target.value.toLowerCase())} placeholder='Search by name'/>                

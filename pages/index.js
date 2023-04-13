@@ -16,8 +16,10 @@ export default function Home() {
   const [loginActive, setLoginActive] = useState(false)
   const [signinActive, setSignActive] = useState(false)
   const allEmail = useSelector((state)=>state.account.allEmail)
+  const router = useRouter()
 
 
+  
 
   const [signUserName, setSignUserName] = useState('')
   const [signEmail, setSignEmail] = useState('')
@@ -77,6 +79,9 @@ export default function Home() {
   
 
   return (
+    router.isFallback ?
+    <div className={styles.loading}>Loading...</div>
+    :
     <>
       <Head>
         <title>Create Next App</title>

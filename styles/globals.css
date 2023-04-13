@@ -1,6 +1,5 @@
 body{
   margin: 0;
-  background-color: rgb(200, 115, 115);
   width: 100vw;
   overflow-y: none;
   
@@ -15,6 +14,13 @@ body{
 }
 .textEnd{
   text-align: end;
+}
+
+.loading{
+  z-index: 10;
+  height: 100vh;
+  width: 100vw;
+  background-color:palevioletred;
 }
 
 
@@ -133,4 +139,45 @@ input[type=range]:focus::-ms-fill-upper {
 
 .btnSimple:hover{
   background-color: rgb(47, 72, 88);
+}
+
+.error{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  color: white;
+  flex-direction: column;
+}
+
+.returnLink{
+  color: white;
+  text-decoration: none;
+  font-size: 2em;
+  transition: 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.returnLink::after{
+  content: "";
+  position: absolute;
+  bottom: -40%;
+  background-color: #3FB59C;
+  height: 5px;
+  width: 300px;
+  transform: scaleX(0);
+  transition: 0.3s ease;
+}
+
+.returnLink:hover{
+  color: #3FB59C;
+}
+
+.returnLink:hover::after{
+  transform: scaleX(1);
 }

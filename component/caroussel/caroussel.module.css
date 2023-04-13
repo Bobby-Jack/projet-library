@@ -1,5 +1,5 @@
 .caroussel{
-   height: 660px;
+   min-height: 660px;
    width: 100vw;
    overflow-y: hidden;
    overflow-x: hidden;
@@ -162,3 +162,4 @@
     right: 3%;
     transform: translateX(-10px);
 }
+
