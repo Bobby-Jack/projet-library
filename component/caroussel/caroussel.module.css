@@ -163,3 +163,46 @@
     transform: translateX(-10px);
 }
 
+
+@media screen and (max-width: 900px){
+    .caroussel{
+        margin-top: 60px;
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+    .title{
+        font-size: 2em;
+    }
+
+    .left{
+        height: fit-content;
+        width: 90%;
+    }
+
+    .content{
+        height: fit-content;
+    }
+
+    .caroussel{
+        margin-top: 60px;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .caroussel{
+        margin-top: 70px;
+    }
+    .right img{
+        height: 250px;
+        width: auto;
+    }
+    .btn{
+        margin: auto;
+        margin-bottom: 5px;
+    }
+    .navigator{
+        left: 35%;
+    }
+}

@@ -128,6 +128,7 @@ export default function AllBookPage({allJsonData}) {
                         if (p.genres.toLowerCase().includes(cat)) {
                           if (p.rating >= minRat) {
                             if (p.title.toLowerCase().includes(search)) {
+                              
                               return <BookCard data={p} alt={alt}/>
                             }
                             

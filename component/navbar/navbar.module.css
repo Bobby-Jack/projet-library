@@ -110,3 +110,23 @@
     }
     
   }
+
+
+@media screen and (max-width: 450px) {
+    .cote{
+        font-size: 0.8em;
+    }
+
+    .phone{
+        display: none;
+    }
+    .navbar{
+        width: 70%;
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+    .search{
+        display: none;
+    }
+}

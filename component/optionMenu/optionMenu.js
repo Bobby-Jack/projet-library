@@ -20,7 +20,7 @@ export default function OptionMenu({active, closeFunction}) {
                 </div>
                 <div className={styles.content}>
                     <Link href='/mainPage'>Main page</Link>
-                    <span onClick={()=>{goTo('allBookPage')}}>All books</span>
+                    <span onClick={()=>{goTo('/allBookPage')}}>All books</span>
                     <Link href='/'>return to Home</Link>
                 </div>
             </div>
